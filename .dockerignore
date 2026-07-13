@@ -1,0 +1,7 @@
+.git
+.venv
+__pycache__
+*.pyc
+annotations.duckdb
+annotations.csv
+.DS_Store
