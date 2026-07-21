@@ -73,7 +73,6 @@ async function loadNext() {
       assignment = data.image;
       document.getElementById("adImage").src = assignment.url;
       document.getElementById("adImage").alt = `Advertisement: ${assignment.filename}`;
-      document.getElementById("imageName").textContent = assignment.filename;
       form.reset();
       showState("surveyState");
       document.getElementById("actionAnswer").focus({ preventScroll: true });

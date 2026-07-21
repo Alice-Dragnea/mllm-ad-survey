@@ -43,9 +43,9 @@ main { flex: 1; display: grid; align-items: center; padding: 48px 0; }
 .image-name { margin: 15px 0 0; color: var(--muted); font-size: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .form-panel { padding: clamp(42px, 5vw, 76px); display: flex; flex-direction: column; justify-content: center; }
 h1 { font-family: "Playfair Display", Georgia, serif; font-size: clamp(34px, 3.3vw, 52px); line-height: 1.08; letter-spacing: -1.3px; margin: 14px 0 17px; }
-.intro { color: var(--muted); font-size: 15px; line-height: 1.65; margin: 0 0 32px; }
-form label { display: flex; gap: 14px; align-items: baseline; font-weight: 600; font-size: 15px; line-height: 1.4; margin: 22px 0 10px; }
-.question-number { color: var(--coral); font-size: 11px; letter-spacing: 1px; }
+.intro { color: var(--ink); font-size: 15px; line-height: 1.65; margin: 0 0 32px; }
+form label { display: flex; gap: 14px; align-items: baseline; font-weight: 600; font-size: 20px; line-height: 1.4; margin: 22px 0 10px; }
+.question-number { color: var(--coral); font-size: 18px; letter-spacing: 1px; }
 textarea { width: 100%; min-height: 108px; resize: vertical; border: 1px solid var(--line); border-radius: 12px; padding: 15px 16px; color: var(--ink); background: #fff; font: inherit; font-size: 14px; line-height: 1.5; transition: border-color .2s, box-shadow .2s; }
 textarea::placeholder { color: #9ba39f; }
 textarea:focus { outline: 0; border-color: var(--green); box-shadow: 0 0 0 3px rgba(31,107,79,.10); }
