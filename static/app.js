@@ -1,4 +1,4 @@
-const states = ["loadingState", "surveyState", "waitingState", "completeState", "emptyState"];
+const states = ["consentState", "loadingState", "surveyState", "waitingState", "completeState", "emptyState"];
 const workerId = getWorkerId();
 let assignment = null;
 let heartbeatTimer = null;
@@ -146,4 +146,27 @@ document.addEventListener("keydown", (event) => {
 });
 
 document.getElementById("checkAgainButton").addEventListener("click", loadNext);
-loadNext();
+
+const CONSENT_KEY = "ad-survey-consent-given";
+const consentCheckbox = document.getElementById("consentCheckbox");
+const consentContinueButton = document.getElementById("consentContinueButton");
+
+consentCheckbox.addEventListener("change", () => {
+  consentContinueButton.disabled = !consentCheckbox.checked;
+});
+
+consentContinueButton.addEventListener("click", async () => {
+  localStorage.setItem(CONSENT_KEY, new Date().toISOString());
+  try {
+    await api("/api/consent", { method: "POST", body: JSON.stringify({ worker_id: workerId }) });
+  } catch (error) {
+    // Non-fatal: consent is already recorded locally.
+  }
+  loadNext();
+});
+
+if (localStorage.getItem(CONSENT_KEY)) {
+  loadNext();
+} else {
+  showState("consentState");
+}

@@ -90,3 +90,14 @@ footer span { margin: 0 8px; color: var(--coral); }
   h1 { font-size: 35px; }
   .state-card { padding: 52px 22px; }
 }
+
+.consent-card { max-width: 760px; text-align: left; }
+.consent-card h1 { text-align: center; }
+.consent-body { max-height: 46vh; overflow-y: auto; margin: 18px 0 22px; padding: 4px 22px 4px 4px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); text-align: left; }
+.consent-body h2 { font-family: inherit; font-size: 14px; margin: 20px 0 6px; color: var(--green-dark); }
+.consent-body p { color: var(--ink); font-size: 14px; line-height: 1.6; margin: 0 0 10px; }
+.consent-checkbox { display: flex; align-items: flex-start; gap: 10px; text-align: left; font-size: 14px; line-height: 1.5; color: var(--ink); font-weight: 500; margin: 6px 0 18px; cursor: pointer; }
+.consent-checkbox input { margin-top: 3px; width: 18px; height: 18px; flex-shrink: 0; }
+#consentContinueButton { width: 100%; }
+#consentContinueButton:disabled { opacity: .5; cursor: not-allowed; }
+.modification-note { background: rgba(232,121,95,.10); border: 1px solid rgba(232,121,95,.28); border-radius: 10px; padding: 12px 14px; color: var(--ink); font-size: 13px; line-height: 1.55; margin: 0 0 26px; }

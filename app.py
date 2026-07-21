@@ -57,6 +57,19 @@ def create_app(test_config: Optional[dict] = None) -> Flask:
     def image_file(filename: str):
         return send_from_directory(app.config["IMAGE_DIR"], filename)
 
+    @app.post("/api/consent")
+    def record_consent():
+        body = request.get_json(silent=True) or {}
+        worker_id = clean_worker_id(body.get("worker_id"))
+        if not worker_id:
+            return jsonify(error="A valid worker ID is required."), 400
+        with connect(app) as con:
+            con.execute(
+                "INSERT INTO consents (worker_id, consented_at) VALUES (?, ?)",
+                [worker_id, utcnow()],
+            )
+        return jsonify(ok=True)
+
     @app.get("/api/stats")
     def stats():
         with connect(app) as con:
@@ -240,6 +253,18 @@ def initialize_database(app: Flask) -> None:
             )
             """
         )
+
+        con.execute(
+            """
+            CREATE SEQUENCE IF NOT EXISTS consent_id_seq START 1;
+            CREATE TABLE IF NOT EXISTS consents (
+                id BIGINT PRIMARY KEY DEFAULT nextval('consent_id_seq'),
+                worker_id VARCHAR NOT NULL,
+                consented_at TIMESTAMP NOT NULL
+            )
+            """
+        )
+
         next_id = con.execute("SELECT COALESCE(MAX(id), 0) + 1 FROM images").fetchone()[0]
         known = {row[0] for row in con.execute("SELECT filename FROM images").fetchall()}
         files = sorted(
