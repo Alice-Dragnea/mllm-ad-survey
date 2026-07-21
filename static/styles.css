@@ -100,4 +100,3 @@ footer span { margin: 0 8px; color: var(--coral); }
 .consent-checkbox input { margin-top: 3px; width: 18px; height: 18px; flex-shrink: 0; }
 #consentContinueButton { width: 100%; }
 #consentContinueButton:disabled { opacity: .5; cursor: not-allowed; }
-.modification-note { background: rgba(232,121,95,.10); border: 1px solid rgba(232,121,95,.28); border-radius: 10px; padding: 12px 14px; color: var(--ink); font-size: 13px; line-height: 1.55; margin: 0 0 26px; }
